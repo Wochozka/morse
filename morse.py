@@ -37,7 +37,7 @@ def parse_args():
 
     return parser.parse_args()
 
-def encrypt(message, args):
+def encrypt(message):
     global DOTS, DASHES, DELIMITER
     result = []
     for char in message:
@@ -51,7 +51,7 @@ def encrypt(message, args):
 
     return result
 
-def decrypt(message, args):
+def decrypt(message):
     global DOTS, DASHES, DELIMITER
     result = []
     word = ''
@@ -113,9 +113,9 @@ def main(args):
     DELIMITER = args.delimiter
 
     if action == 'encrypt':
-        result = encrypt(message, args)
+        result = encrypt(message)
     else:
-        result = decrypt(message, args)
+        result = decrypt(message)
 
     if args.output:
         with open(args.output, 'w') as f:
