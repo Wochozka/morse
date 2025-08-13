@@ -113,10 +113,15 @@ def main(args):
     DELIMITER = args.delimiter
 
     if action == 'encrypt':
-        return encrypt(message, args)
+        result = encrypt(message, args)
     else:
-        return decrypt(message, args)
+        result = decrypt(message, args)
 
+    if args.output:
+        with open(args.output, 'w') as f:
+            f.write(result)
+    else:
+        print(result)
 
 
 if __name__ == '__main__':
